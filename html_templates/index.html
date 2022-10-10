@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="icon" type="image/png" href="static/img/favicon.ico" />
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-calendar@6.1.17/dist/css/bulma-calendar.min.css">
+      <script src="https://cdn.jsdelivr.net/npm/bulma-calendar@6.1.17/dist/js/bulma-calendar.min.js" crossorigin="anonymous"></script>
+      <script src="https://kit.fontawesome.com/f4a0e6453b.js" crossorigin="anonymous"></script>
+      <title>{% block title %}Instant Connect Launcher{% end %}</title>
+      <style>
+          .column.is-centered {
+              display: flex;
+              justify-content: center;
+          }
+
+          .my-hero-fullheight {
+            height: calc(100vh - 72px)
+          }
+
+          .my-hero-fullheight-padded-top {
+            height: calc(100vh - 108px)
+          }
+
+          .hero-body.is-vcentered {
+              display: flex;
+              flex-wrap: wrap;
+              align-content: center;
+          }
+
+          #hero-section {
+              border-radius: 6px;
+          }
+
+          iframe {
+              width: 100%;
+              height: 100%;
+          }
+      </style>
+  </head>
+  <body>
+    <div id="header-box" class="columns is-centered is-primary has-background-primary mt-0">
+        <div class="column is-3 is-centered py-0"></div>
+        <div class="column is-centered py-1">
+            <h1 id='main-title' class="title">Instant Connect Launcher</h1>
+        </div>
+        <div class="column is-3 is-centered py-0">
+            <div class="columns is-mobile is-centered my-1">
+                <div class="column is-narrow is-centered py-0">
+                    <button id="logout" class="button is-narrow is-rounded">
+                        <span class="pb-1">Logout</span>
+                        <span class="icon">
+                            <i class="fas fa-right-from-bracket"></i>
+                        </span>
+                    </button>
+                </div>
+                <div class="column py-1 pl-0">
+                    <figure class="image is-32x32">
+                        <img id="webex-avatar" class="is-rounded"></img>
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section id="hero-section" class="hero my-hero-fullheight">
+        <div class="columns is-mobile is-centered pt-5 mb-0">
+            <div class="column is-narrow py-0">
+                <div id="main-notification" class="notification has-text-centered" style="visibility: hidden;">
+                </div>
+            </div>
+        </div>
+        <div id="hero-content" class="hero-body has-text-centered is-vcentered pt-0">
+            <div id="main-div" class="container pb-6" style="">
+                <div class="columns is-mobile is-centered">
+                    <div class="column is-narrow py-0">
+                        <!--<div class="my-calendar"></div>-->
+                        <input id="my-calendar" class="my-calendar" type="date" data-close-on-select="true"/>
+                        <div class="select mt-1">
+                            <select id="duration">
+                              <option value="15">Duration (minutes)</option>
+                              <option value="15">15 (default)</option>
+                              <option>30</option>
+                              <option>45</option>
+                              <option>60</option>
+                              <option>75</option>
+                              <option>90</option>
+                              <option>120</option>
+                              <option>180</option>
+                            </select>
+                        </div>
+                        <button id="start" class="button is-rounded mt-1">
+                            <span class="pb-1">Create</span>
+                        </button>
+                    </div>
+                </div>
+                <div id="meeting-buttons" style="visibility: hidden;">
+                    <div id="copy-join-buttons" class="columns is-mobile is-centered">
+                        <div class="column is-narrow pb-0">
+                            <button id="copy" class="button is-rounded mr-2">
+                                <span class="pb-1">Copy Link</span>
+                                <span class="icon">
+                                    <i class="far fa-copy"></i>
+                                </span>
+                            </button>
+                            <button id="join" class="button is-rounded">
+                                <span class="pb-1">Join Meeting</span>
+                                <span class="icon">
+                                    <i class="fas fa-right-to-bracket"></i>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="columns is-centered pb-6">
+                        <div class="column is-3 pr-0 pb-0">
+                            <input id="email-input" class="input" type="text" placeholder="Guest Email Addresses, comma separated">
+                        </div>
+                        <div class="column is-narrow pl-0">
+                            <button id="email" class="button is-info">
+                                <span class="pb-1">Send</span>
+                                <span class="icon">
+                                    <i class="far fa-envelope"></i>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+  </body>
+  {% block scripts %}{% end %}
+  <script src="static/js/jquery-3.4.1.min.js"></script>
+  <!--<script src="https://unpkg.com/webex/umd/webex.min.js"></script>-->
+  <script src="static/js/urlParams.js"></script>
+  <script type="text/javascript">
+
+    if(MARGIN_TOP){
+        $('#header-box').removeClass('mt-0');
+        $('#header-box').addClass(`mt-${MARGIN_TOP}`);
+        $('.my-hero-fullheight').each(function(){
+            $(this).addClass('my-hero-fullheight-padded-top');
+            $(this).removeClass('my-hero-fullheight');
+        })
+    }
+
+    webexAvatar = "{{ person.get('avatar') }}";
+    if(webexAvatar == "None"){
+        webexAvatar = "static/img/user.png";
+    }
+
+    environment = "";
+    if(window.location.pathname != "/"){
+        environment = window.location.pathname.substring(1);
+    }
+
+    let today = new Date();
+    let todayDate = `${today.getMonth() + 1}/${today.getDate()}/${today.getFullYear()}`;
+    var calendars = new bulmaCalendar('.my-calendar', {
+        type: 'datetime',
+        dateFormat: 'MM/dd/yyyy', // 01.01.2021
+        timeFormat: 'HH:mm',
+        startDate: todayDate,
+        startTime: today.toTimeString().substr(0,5),
+        //displayMode: "dialog",
+        //closeOnSelect: true
+        //closeOnOverlayClick: false,
+        validateLabel: "Save"
+    });
+
+    calendars.on('hide', function(e){
+        calendars.save();
+    });
+
+    //$('.datetimepicker-dummy-input').val(todayDate);
+    //$('.my-calendar').val(todayDate);
+    // Initialize all input of date type.
+    //const calendars = bulmaCalendar.attach('[type="date"]', options);
+  </script>
+  <script src="static/js/index.js"></script>
+</html>

@@ -1,0 +1,12 @@
+Dockerfile
+__pycache__/
+Notes
+.DS_Store
+*.pyc
+*.sqlite
+*.yaml
+.env
+prod.env
+*.txt
+*.ics
+boto3test.py
