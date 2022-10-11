@@ -7,6 +7,7 @@ class Settings(object):
 	port = int(os.environ.get("MY_APP_PORT"))
 	cookie_user = os.environ.get("MY_COOKIE_USER")
 	cookie_user_token = cookie_user + "-token"
+	cookie_secret = os.environ.get("MY_COOKIE_SECRET")
 
 	aud = os.environ.get("MY_INSTANT_CONNECT_AUD")
 	org_ids = os.environ.get("MY_ORG_IDS").split(",")
