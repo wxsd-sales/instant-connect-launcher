@@ -1,4 +1,8 @@
 # Instant Connect Launcher
+
+Welcome to our WXSD DEMO Repo! <!-- Keep this here --> 
+<!-- Keep the following here -->  
+ *_Everything included is for demo and Proof of Concept purposes only. Your use of the site is solely at your own risk. This site may contain links to third party content, which we do not warrant, endorse, or assume liability for. These demos are for Cisco Webex usecases, but are not Official Cisco Webex Branded demos._
 **A GUI Scheduling Utility for Instant Connect**
 
 <a href="https://instant-connect-launcher.wbx.ninja/"><strong>View Demo</strong></a>
@@ -6,6 +10,8 @@
 <a href="https://github.com/WXSD-Sales/instant-connect-launcher/issues"><strong>Report Bug</strong></a>
 ·
 <a href="https://github.com/WXSD-Sales/instant-connect-launcher/issues"><strong>Request Feature</strong></a>
+
+
 
 ## Overview
 [![Instant Connect Scheduler Video](https://user-images.githubusercontent.com/19175490/194949324-3c4eae5f-73d6-4d3e-8c97-01331198eaab.png)](https://app.vidcast.io/share/c781f1c8-d258-488e-9d3a-41d279a310b3)
