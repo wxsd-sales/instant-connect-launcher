@@ -1,5 +1,7 @@
 # Instant Connect Launcher
 
+Includes a calendar/scheduling web based UI for Instant Connect meetings, and allows sending meeting links via sms and email.
+
 Welcome to our WXSD DEMO Repo! <!-- Keep this here --> 
 <!-- Keep the following here -->  
  *_Everything included is for demo and Proof of Concept purposes only. Your use of the site is solely at your own risk. This site may contain links to third party content, which we do not warrant, endorse, or assume liability for. These demos are for Cisco Webex usecases, but are not Official Cisco Webex Branded demos._
