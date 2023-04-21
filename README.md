@@ -36,7 +36,7 @@ RUN pip install icalendar
 ```
 
 ## License
-All contents are licensed under the MIT license. Please see `LICENSE` for details.
+All contents are licensed under the MIT license. Please see [license](LICENSE) for details.
 
 ## Disclaimer
 <!-- Keep the following here -->  
