@@ -1,8 +1,6 @@
-# Instant Connect Launcher
-
+# Instant Connect Launcher  
+**A GUI Scheduling Utility for Instant Connect**  
 Includes a calendar/scheduling web based UI for Instant Connect meetings, and allows sending meeting links via email.
-
-**A GUI Scheduling Utility for Instant Connect**
 
 <a href="https://instant-connect-launcher.wbx.ninja/"><strong>View Demo</strong></a>
 ·
