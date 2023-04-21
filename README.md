@@ -2,9 +2,6 @@
 
 Includes a calendar/scheduling web based UI for Instant Connect meetings, and allows sending meeting links via email.
 
-Welcome to our WXSD DEMO Repo! <!-- Keep this here --> 
-<!-- Keep the following here -->  
- *_Everything included is for demo and Proof of Concept purposes only. Your use of the site is solely at your own risk. This site may contain links to third party content, which we do not warrant, endorse, or assume liability for. These demos are for Cisco Webex usecases, but are not Official Cisco Webex Branded demos._
 **A GUI Scheduling Utility for Instant Connect**
 
 <a href="https://instant-connect-launcher.wbx.ninja/"><strong>View Demo</strong></a>
@@ -18,13 +15,14 @@ Welcome to our WXSD DEMO Repo! <!-- Keep this here -->
 ## Overview
 [![Instant Connect Scheduler Video](https://user-images.githubusercontent.com/19175490/194949324-3c4eae5f-73d6-4d3e-8c97-01331198eaab.png)](https://app.vidcast.io/share/c781f1c8-d258-488e-9d3a-41d279a310b3)
 
+## Setup
+
+### Prerequisites & Dependencies: 
 Server Requirements:
 1. python version >= 3.8
 2. pip install modules.
 
 Alternatively, you can install **docker** and build/run this as a container using the provided Dockerfile.
-
-## Setup
 
 ### Server Side Setup
 1. Clone this repository
@@ -38,6 +36,13 @@ RUN pip install boto3
 RUN pip install aws-requests-auth
 RUN pip install icalendar
 ```
+
+## License
+All contents are licensed under the MIT license. Please see `LICENSE` for details.
+
+## Disclaimer
+<!-- Keep the following here -->  
+ Everything included is for demo and Proof of Concept purposes only. Use of the site is solely at your own risk. This site may contain links to third party content, which we do not warrant, endorse, or assume liability for. These demos are for Cisco Webex usecases, but are not Official Cisco Webex Branded demos.
 
 ## Support
 
